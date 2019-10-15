@@ -13,16 +13,16 @@ describe Warden::JWTAuth::Strategy do
   end
 
   describe '#valid?' do
-    context 'when Authorization header is valid' do
+    context 'when X-Authorization header is valid' do
       it 'returns true' do
-        env = { 'HTTP_AUTHORIZATION' => 'Bearer 123' }
+        env = { 'HTTP_X_AUTHORIZATION' => 'Bearer 123' }
         strategy = described_class.new(env, :user)
 
         expect(strategy).to be_valid
       end
     end
 
-    context 'when Authorization header is not valid' do
+    context 'when X-Authorization header is not valid' do
       it 'returns false' do
         env = {}
         strategy = described_class.new(env, :user)
@@ -40,7 +40,7 @@ describe Warden::JWTAuth::Strategy do
 
   describe '#authenticate!' do
     context 'when token is invalid' do
-      let(:env) { { 'HTTP_AUTHORIZATION' => 'Bearer 123' } }
+      let(:env) { { 'HTTP_X_AUTHORIZATION' => 'Bearer 123' } }
       let(:strategy) { described_class.new(env, :user) }
 
       before { strategy.authenticate! }
@@ -56,7 +56,7 @@ describe Warden::JWTAuth::Strategy do
 
     context 'when token is valid' do
       let(:token) { Warden::JWTAuth::UserEncoder.new.call(user, :user) }
-      let(:env) { { 'HTTP_AUTHORIZATION' => "Bearer #{token}" } }
+      let(:env) { { 'HTTP_X_AUTHORIZATION' => "Bearer #{token}" } }
       let(:strategy) { described_class.new(env, :user) }
 
       before { strategy.authenticate! }

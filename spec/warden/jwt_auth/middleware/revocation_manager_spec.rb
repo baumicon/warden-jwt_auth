@@ -15,7 +15,7 @@ describe Warden::JWTAuth::Middleware::RevocationManager do
   let(:app) { warden_app(this_app) }
 
   def sign_in_with_jwt
-    header('Authorization', "Bearer #{token}")
+    header('X-Authorization', "Bearer #{token}")
     login_as(user, scope: :user)
   end
 

@@ -3,7 +3,7 @@
 module Warden
   module JWTAuth
     class Middleware
-      # Dispatches a token (adds it to `Authorization` response header) if it
+      # Dispatches a token (adds it to `X-Authorization` response header) if it
       # has been added to the request `env` by [Hooks]
       class TokenDispatcher < Middleware
         # Debugging key added to `env`

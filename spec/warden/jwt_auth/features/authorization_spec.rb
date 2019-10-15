@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe 'Authorization', type: :feature do
+describe 'X-Authorization', type: :feature do
   include_context 'configuration'
   include_context 'fixtures'
   include_context 'feature'

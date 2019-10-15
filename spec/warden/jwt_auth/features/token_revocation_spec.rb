@@ -45,7 +45,7 @@ describe 'Token revocation', type: :feature do
     end
   end
 
-  context 'when Authorization header is not set' do
+  context 'when X-Authorization header is not set' do
     it 'does not raise an error' do
       status = call_app(app, pristine_env, ['GET', '/'])[0]
 

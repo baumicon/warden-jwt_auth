@@ -115,11 +115,11 @@ config.dispatch_requests = [
 
 **Important**: You are encouraged to delimit your regular expression with `^` and `$` to avoid unintentional matches.
 
-Tokens will be returned in the `Authorization` response header, with format `Bearer #{token}`.
+Tokens will be returned in the `X-Authorization` response header, with format `Bearer #{token}`.
 
 ### Requests authentication
 
-Once you have a valid token, you can authenticate following requests providing the token in the `Authorization` request header, with format `Bearer #{token}`.
+Once you have a valid token, you can authenticate following requests providing the token in the `X-Authorization` request header, with format `Bearer #{token}`.
 
 ### Revocation configuration
 
@@ -152,7 +152,7 @@ module RevocationStrategy
   def self.jwt_revoked?(payload, user)
     # Does something to check whether the JWT token is revoked for given user
   end
-  
+
   def self.revoke_jwt(payload, user)
     # Does something to revoke the JWT token for given user
   end

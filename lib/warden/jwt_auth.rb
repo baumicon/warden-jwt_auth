@@ -34,7 +34,7 @@ module Warden
     end
 
     # Array of tuples [request_method, request_path_regex] to match request
-    # verbs and paths where a JWT token should be added to the `Authorization`
+    # verbs and paths where a JWT token should be added to the `X-Authorization`
     # response header
     #
     # @example

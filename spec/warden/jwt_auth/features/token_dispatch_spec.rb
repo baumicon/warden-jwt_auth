@@ -24,10 +24,10 @@ describe 'Token dispatch', type: :feature do
   end
 
   context 'when path and method match with configured' do
-    it 'adds the token to Authorization response header' do
+    it 'adds the token to X-Authorization response header' do
       headers = call_app(signed_in_app, pristine_env, ['POST', '/sign_in'])[1]
 
-      expect(headers).to have_key('Authorization')
+      expect(headers).to have_key('X-Authorization')
     end
   end
 
@@ -35,7 +35,7 @@ describe 'Token dispatch', type: :feature do
     it 'does not add the token to the response' do
       headers = call_app(signed_in_app, pristine_env, ['POST', '/'])[1]
 
-      expect(headers).not_to have_key('Authorization')
+      expect(headers).not_to have_key('X-Authorization')
     end
   end
 
@@ -43,7 +43,7 @@ describe 'Token dispatch', type: :feature do
     it 'does not add the token to the response' do
       headers = call_app(signed_in_app, pristine_env, ['GET', '/sign_in'])[1]
 
-      expect(headers).not_to have_key('Authorization')
+      expect(headers).not_to have_key('X-Authorization')
     end
   end
 

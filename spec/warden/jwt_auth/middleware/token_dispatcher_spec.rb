@@ -27,20 +27,20 @@ describe Warden::JWTAuth::Middleware::TokenDispatcher do
     end
 
     context 'when token has been added to env' do
-      it 'adds it to the Authorization header' do
+      it 'adds it to the X-Authorization header' do
         login_as user, scope: :user
 
         post '/sign_in'
 
-        expect(last_response.headers['Authorization']).not_to be_nil
+        expect(last_response.headers['X-Authorization']).not_to be_nil
       end
     end
 
     context 'when token has not been added to env' do
-      it 'adds nothing to the Authorization header' do
+      it 'adds nothing to the X-Authorization header' do
         post '/sign_in'
 
-        expect(last_response.headers['Authorization']).to be_nil
+        expect(last_response.headers['X-Authorization']).to be_nil
       end
     end
   end

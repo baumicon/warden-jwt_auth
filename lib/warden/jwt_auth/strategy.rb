@@ -5,7 +5,7 @@ require 'warden'
 module Warden
   module JWTAuth
     # Warden strategy to authenticate an user through a JWT token in the
-    # `Authorization` request header
+    # `X-Authorization` request header
     # :reek:PrimmaDonnaMethod
     class Strategy < Warden::Strategies::Base
       attr_reader :token
